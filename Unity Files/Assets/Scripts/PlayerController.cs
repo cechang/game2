@@ -10,9 +10,21 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 {
 	public float speed;
-	public float tilt;
+	public float bank;
 	public Boundary boundary;
-	
+	public GameObject laser;
+	public Transform shotLocation;
+	public float fireRate;
+	private float nextShot;
+
+	void Update ()
+	{
+		if (Input.GetButton ("Fire1") && Time.time > nextShot) {
+			nextShot = Time.time + fireRate;
+			Instantiate (laser, shotLocation.position, shotLocation.rotation);
+		}
+	}
+
 	void FixedUpdate ()
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
@@ -28,6 +40,6 @@ public class PlayerController : MonoBehaviour
 				Mathf.Clamp (rigidbody.position.z, boundary.zMin, boundary.zMax)
 				);
 		
-		rigidbody.rotation = Quaternion.Euler (90.0f, 0.0f, rigidbody.velocity.x * -tilt);
+		rigidbody.rotation = Quaternion.Euler (-45-rigidbody.velocity.x * bank, 270.0f, 270.0f);
 	}
 }
