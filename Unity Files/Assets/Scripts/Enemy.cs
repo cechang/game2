@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
 	void Start ()
 	{
 		rigidbody.velocity = transform.forward * -speed;
+
 	}
 
 	void OnTriggerEnter(Collider other) 
