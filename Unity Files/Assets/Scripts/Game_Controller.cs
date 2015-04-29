@@ -8,10 +8,18 @@ public class Game_Controller : MonoBehaviour
 	public Vector3 spawnValues;
 	public float spawnRate;
 	public float countdown;
-	
+	public GUIText repText;
+	public GUIText chainText;
+	private int rep;
+	private int chain;
+
 	void Start ()
 	{
 		StartCoroutine (SpawnEnemy ());
+		rep = 0;
+		chain = 0;
+		CalcRep ();
+		CalcChain ();
 	}
 	
 	IEnumerator SpawnEnemy ()
@@ -23,5 +31,38 @@ public class Game_Controller : MonoBehaviour
 			Instantiate (enemy, spawnPosition, spawnRotation);
 			yield return new WaitForSeconds (spawnRate);
 		}
+	}
+
+	public int GetChain()
+	{
+		return chain;
+	}
+
+	public void AddRep (int repWorth)
+	{
+		rep = rep + repWorth;
+		CalcRep ();
+	}
+
+	public void AddChain ()
+	{
+		chain = chain + 1;
+		CalcChain ();
+	}
+
+	public void ResetChain()
+	{
+		chain = 0;
+		CalcChain ();
+	}
+
+	void CalcRep()
+	{
+		repText.text = "Reputation: " + rep;
+	}
+
+	void CalcChain()
+	{
+		chainText.text = "Chain: " + chain;
 	}
 }
