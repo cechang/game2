@@ -15,7 +15,14 @@ public class PlayerController : MonoBehaviour
 	public GameObject laser;
 	public Transform shotLocation;
 	public float fireRate;
+	public int health;
 	private float nextShot;
+
+
+	void Start() 
+	{
+		health = 1;
+	}
 
 	void Update ()
 	{
@@ -23,6 +30,11 @@ public class PlayerController : MonoBehaviour
 			nextShot = Time.time + fireRate;
 			Instantiate (laser, shotLocation.position, shotLocation.rotation);
 		}
+	}
+
+	void LoseHealth()
+	{
+		health = health - 1;
 	}
 
 	void FixedUpdate ()

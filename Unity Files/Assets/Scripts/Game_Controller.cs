@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+//singleton pattern
 
 public class Game_Controller : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class Game_Controller : MonoBehaviour
 	private int rep;
 	private int chain;
 
+	public int playerHealth;
+	public int enemyHealth;
+
+
+
 	void Start ()
 	{
 		StartCoroutine (SpawnEnemy ());
@@ -20,6 +26,8 @@ public class Game_Controller : MonoBehaviour
 		chain = 0;
 		CalcRep ();
 		CalcChain ();
+		Enemy.Method(); 
+
 	}
 	
 	IEnumerator SpawnEnemy ()
@@ -65,4 +73,12 @@ public class Game_Controller : MonoBehaviour
 	{
 		chainText.text = "Chain: " + chain;
 	}
+
+	void CalcHealth()
+	{
+
+	}
+
+
+
 }

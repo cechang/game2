@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour {
 
 	public float speed;
 	public int worth;
+
 	
 	void Start ()
 	{
@@ -21,7 +22,6 @@ public class Enemy : MonoBehaviour {
 
 		rigidbody.velocity = transform.forward * -speed;
 		worth = 1;
-
 	}
 
 	void OnTriggerEnter(Collider other) 
@@ -32,6 +32,9 @@ public class Enemy : MonoBehaviour {
 		}
 		if (other.tag == "Player") 
 		{
+			//other.gameObject.LoseHealth();
+			//if (other.gameObject.health == 0)
+			// Destroy (other.gameObject);
 			Destroy(other.gameObject);
 			Destroy(gameObject);
 		}
@@ -49,5 +52,9 @@ public class Enemy : MonoBehaviour {
 		gameController.ResetChain ();
 	}
 
+	public static void Method()
+	{
+		Debug.Log ("Test");
+	}
 
 }
