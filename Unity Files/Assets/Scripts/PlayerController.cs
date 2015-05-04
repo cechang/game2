@@ -9,19 +9,28 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour
 {
+	private Game_Controller gameController;
+
 	public float speed;
 	public float bank;
 	public Boundary boundary;
 	public GameObject laser;
 	public Transform shotLocation;
 	public float fireRate;
-	public int health;
 	private float nextShot;
 
 
 	void Start() 
 	{
-		health = 1;
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null)
+		{
+			gameController = gameControllerObject.GetComponent <Game_Controller>();
+		}
+		if (gameController == null)
+		{
+			Debug.Log ("Cannot find 'GameController' script");
+		}
 	}
 
 	void Update ()
@@ -30,11 +39,15 @@ public class PlayerController : MonoBehaviour
 			nextShot = Time.time + fireRate;
 			Instantiate (laser, shotLocation.position, shotLocation.rotation);
 		}
+		if (gameController.playerHealth == 0) {
+			Destroy(gameObject);
+		}
 	}
+	
 
-	void LoseHealth()
+	public void LoseHealth()
 	{
-		health = health - 1;
+		gameController.playerHealth = gameController.playerHealth - 1;
 	}
 
 	void FixedUpdate ()

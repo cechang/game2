@@ -26,7 +26,7 @@ public class Game_Controller : MonoBehaviour
 		chain = 0;
 		CalcRep ();
 		CalcChain ();
-		Enemy.Method(); 
+		 
 
 	}
 	
@@ -73,11 +73,7 @@ public class Game_Controller : MonoBehaviour
 	{
 		chainText.text = "Chain: " + chain;
 	}
-
-	void CalcHealth()
-	{
-
-	}
+	
 
 
 
