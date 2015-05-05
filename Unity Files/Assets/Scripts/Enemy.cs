@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
 	private Game_Controller gameController;
 	private PlayerController playerController;
+
+	private int health;
 
 	public float speed;
 	public int worth;
@@ -31,8 +34,21 @@ public class Enemy : MonoBehaviour {
 			Debug.Log ("Cannot find 'PlayerController' script");
 		}
 
+		StartCoroutine (UpgradeEnemy ());
+
 		rigidbody.velocity = transform.forward * -speed;
 		worth = 1;
+		health = gameController.enemyHealth;
+	}
+	
+
+	void Update()
+	{
+		if (health == 0) {
+			Destroy (gameObject);
+			gameController.AddRep (worth + gameController.GetChain());
+			gameController.AddChain ();
+		}
 	}
 
 	void OnTriggerEnter(Collider other) 
@@ -46,18 +62,14 @@ public class Enemy : MonoBehaviour {
 		{
 			Destroy (gameObject);
 			playerController.LoseHealth();
-			worth = worth + gameController.GetChain();
-			gameController.AddRep (worth);
+			gameController.AddRep (worth + gameController.GetChain());
 			gameController.AddChain ();
 		}
 
 		if (other.tag == "Weapon") {
 
 			Destroy (other.gameObject);
-			Destroy (gameObject);
-			worth = worth + gameController.GetChain ();
-			gameController.AddRep (worth);
-			gameController.AddChain ();
+			LoseHealth();
 		}
 	}
 
@@ -67,7 +79,23 @@ public class Enemy : MonoBehaviour {
 		gameController.ResetChain ();
 	}
 
+	void LoseHealth()
+	{
+		health = health - 1;
+	}
 
+	//needs to be moved to gamecontroller
+	IEnumerator UpgradeEnemy()
+	{
+		yield return new WaitForSeconds (2.0f);
+		while (worth< 100) 
+		{
+			worth = worth + 5;
+			health = gameController.enemyHealth + 1;
+			yield return new WaitForSeconds (2.0f);
+			Debug.Log ("worth went up");
+		}
+	}
 
 
 }

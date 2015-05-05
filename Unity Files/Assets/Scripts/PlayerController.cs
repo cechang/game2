@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 [System.Serializable]
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
 	public float fireRate;
 	private float nextShot;
 
+	public Slider healthSlider;
+
 
 	void Start() 
 	{
@@ -31,6 +34,8 @@ public class PlayerController : MonoBehaviour
 		{
 			Debug.Log ("Cannot find 'GameController' script");
 		}
+
+		healthSlider.value = gameController.playerHealth;
 	}
 
 	void Update ()
@@ -48,6 +53,7 @@ public class PlayerController : MonoBehaviour
 	public void LoseHealth()
 	{
 		gameController.playerHealth = gameController.playerHealth - 1;
+		healthSlider.value = gameController.playerHealth;
 	}
 
 	void FixedUpdate ()
