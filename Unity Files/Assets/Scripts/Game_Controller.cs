@@ -12,13 +12,13 @@ public class Game_Controller : MonoBehaviour
 	public float countdown;
 	public GUIText repText;
 	public GUIText chainText;
+
 	private int rep;
 	private int chain;
 
-
-
 	public int playerHealth;
 	public int enemyHealth;
+	public int enemyWorth;
 
 
 
@@ -27,10 +27,12 @@ public class Game_Controller : MonoBehaviour
 	void Start ()
 	{
 		StartCoroutine (SpawnEnemy ());
+		StartCoroutine (UpgradeEnemy ());
 		rep = 0;
 		chain = 0;
 		CalcRep ();
 		CalcChain ();
+
 		 
 
 	}
@@ -43,6 +45,18 @@ public class Game_Controller : MonoBehaviour
 			Quaternion spawnRotation = Quaternion.identity;
 			Instantiate (enemy, spawnPosition, spawnRotation);
 			yield return new WaitForSeconds (spawnRate);
+		}
+	}
+
+	IEnumerator UpgradeEnemy()
+	{
+		yield return new WaitForSeconds (22.0f);
+		while (enemyWorth < 100) 
+		{
+			enemyWorth = enemyWorth + 5;
+			enemyHealth = enemyHealth + 1;
+			yield return new WaitForSeconds (20.0f);
+			Debug.Log ("worth went up");
 		}
 	}
 

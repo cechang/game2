@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour {
 	private int health;
 
 	public float speed;
-	public int worth;
+	private int worth;
 
 	
 	void Start ()
@@ -34,10 +34,8 @@ public class Enemy : MonoBehaviour {
 			Debug.Log ("Cannot find 'PlayerController' script");
 		}
 
-		StartCoroutine (UpgradeEnemy ());
-
 		rigidbody.velocity = transform.forward * -speed;
-		worth = 1;
+		worth = gameController.enemyWorth;
 		health = gameController.enemyHealth;
 	}
 	
@@ -77,6 +75,7 @@ public class Enemy : MonoBehaviour {
 	{
 		Destroy (gameObject);
 		gameController.ResetChain ();
+		playerController.LoseHealth ();
 	}
 
 	void LoseHealth()
@@ -84,18 +83,7 @@ public class Enemy : MonoBehaviour {
 		health = health - 1;
 	}
 
-	//needs to be moved to gamecontroller
-	IEnumerator UpgradeEnemy()
-	{
-		yield return new WaitForSeconds (2.0f);
-		while (worth< 100) 
-		{
-			worth = worth + 5;
-			health = gameController.enemyHealth + 1;
-			yield return new WaitForSeconds (2.0f);
-			Debug.Log ("worth went up");
-		}
-	}
+
 
 
 }
