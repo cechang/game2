@@ -9,8 +9,8 @@ public class SelfDestruct : MonoBehaviour {
 	public void Boom(int i)
 	{
 		//yield return new WaitForSeconds (2.0f);
-		Destroy (player);
-		Destroy (enemy);
+		//Destroy (player);
+		//Destroy (enemy);
 		//yield return new WaitForSeconds (2.0f);
 		Application.LoadLevel (i);
 	}

@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetButton ("Fire1") && Time.time > nextShot) {
+		if (Input.GetButton ("Jump") && Time.time > nextShot) {
 			nextShot = Time.time + fireRate;
 			Instantiate (laser, shotLocation.position, shotLocation.rotation);
 		}
