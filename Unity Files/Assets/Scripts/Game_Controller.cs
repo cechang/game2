@@ -39,8 +39,6 @@ public class Game_Controller : MonoBehaviour
 	
 	IEnumerator SpawnEnemy ()
 	{
-		if (Application.loadedLevel == 1) 
-		{
 			yield return new WaitForSeconds (countdown);
 			while (player.activeSelf) {
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
@@ -48,7 +46,6 @@ public class Game_Controller : MonoBehaviour
 				Instantiate (enemy, spawnPosition, spawnRotation);
 				yield return new WaitForSeconds (spawnRate);
 			}
-		} 
 
 	}
 
