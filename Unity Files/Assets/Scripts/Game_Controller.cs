@@ -5,6 +5,8 @@ using System.Collections;
 
 public class Game_Controller : MonoBehaviour
 {
+	public static Game_Controller instance = null; 
+
 	public GameObject enemy;
 	public GameObject player;
 	public Vector3 spawnValues;
@@ -13,34 +15,52 @@ public class Game_Controller : MonoBehaviour
 	public GUIText repText;
 	public GUIText chainText;
 
-	private int rep;
-	private int chain;
+	public int rep;
+	public int chain;
 
 	public int playerHealth;
 	public int enemyHealth;
 	public int enemyWorth;
 
 
+	void Awake (){
 
+		if (instance == null)
+			instance = this;
+		else if (instance != this)
+			Destroy(gameObject);  
+		DontDestroyOnLoad(gameObject);
+	}
 
 
 	void Start ()
 	{
-		StartCoroutine (SpawnEnemy ());
-		StartCoroutine (UpgradeEnemy ());
 		rep = 0;
 		chain = 0;
 		CalcRep ();
 		CalcChain ();
-
+		StartCoroutine (SpawnEnemy ());
+		StartCoroutine (UpgradeEnemy ());
 		 
 
 	}
+
+	void OnLevelWasLoaded(int level){
+		if (level == 1){
+			enemyHealth = 1;
+			enemyWorth = 1;
+		}
+	}
+
+	void Update(){
+		CalcRep ();
+		CalcChain ();
+	}
 	
+
 	IEnumerator SpawnEnemy ()
 	{
-		if (Application.loadedLevel == 1) 
-		{
+
 			yield return new WaitForSeconds (countdown);
 			while (player.activeSelf) {
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
@@ -48,7 +68,7 @@ public class Game_Controller : MonoBehaviour
 				Instantiate (enemy, spawnPosition, spawnRotation);
 				yield return new WaitForSeconds (spawnRate);
 			}
-		} 
+		 
 
 	}
 
