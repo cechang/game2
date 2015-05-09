@@ -61,6 +61,12 @@ public class Game_Controller : MonoBehaviour
 		}
 	}
 
+	/*void OnLevelWasLoaded (int level){
+		if (level == 1) {
+			playerHealth = 5;
+		}
+	}*/
+
 	public int GetChain()
 	{
 		return chain;
