@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 //singleton pattern
 
 
 public class Game_Controller : MonoBehaviour
 {
 	public static Game_Controller instance = null; 
+
+	public static LinkedList<GameObject> enemyList = new LinkedList<GameObject>();
 
 	public GameObject enemy;
 	public GameObject player;
@@ -106,7 +109,9 @@ public class Game_Controller : MonoBehaviour
 	}
 
 	void Update(){
-		CalcRep ();
+		if (Application.loadedLevel == 1) {
+			CalcRep ();
+		}
 
 	}
 	
@@ -169,6 +174,8 @@ public class Game_Controller : MonoBehaviour
 	{
 		chainText.text = "Chain: " + chain;
 	}
+
+
 	
 
 

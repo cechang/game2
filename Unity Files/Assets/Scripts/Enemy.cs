@@ -38,6 +38,11 @@ public class Enemy : MonoBehaviour {
 		worth = gameController.enemyWorth;
 		health = gameController.enemyHealth + gameController.bonusEnemyHealth;
 	}
+
+	void Awake(){
+		Game_Controller.enemyList.AddLast (gameObject);
+		Debug.Log ("Added enemy to list");
+	}
 	
 
 	void Update()
@@ -83,6 +88,10 @@ public class Enemy : MonoBehaviour {
 		health = health - (1 + gameController.bonusPower);
 	}
 
+	void OnDestroy(){
+		Game_Controller.enemyList.Remove (gameObject);
+		Debug.Log ("Removed enemy from list");
+	}
 
 
 

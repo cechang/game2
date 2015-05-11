@@ -11,6 +11,7 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 {
 	private Game_Controller gameController;
+	public GameObject gameControll;
 
 	public float speed;
 	public float bank;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
 	void Start() 
 	{
+		gameControll = GameObject.FindWithTag ("GameController");
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
 		if (gameControllerObject != null)
 		{
@@ -47,11 +49,14 @@ public class PlayerController : MonoBehaviour
 			nextShot = Time.time + fireRate;
 			Instantiate (laser, shotLocation.position, shotLocation.rotation);
 		}
+		
+
 		if (gameController.playerHealth <= 0) {
 			Destroy(gameObject);
 			gameOver.SetActive(true);
 			restart.SetActive(true);
 			sdButton.SetActive(false);
+			Destroy(gameControll);
 
 		}
 	}
