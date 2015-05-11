@@ -26,7 +26,9 @@ public class Game_Controller : MonoBehaviour
 	public int bonusHealth;
 	public int bonusPower;
 	public int bonusSpeed;
-	public int bonusRank;
+	public int bonusChain;
+	public int bonusEnemyHealth;
+	public int bonusWorth;
 	
 	public bool bought1;
 	public bool bought2;
@@ -63,16 +65,12 @@ public class Game_Controller : MonoBehaviour
 	{
 		rep = 0;
 		chain = 0;
-		bonusHealth = 0;
-		bonusPower = 0;
-		bonusRank = 0;
-		bonusSpeed = 0;
+		bonusChain = 1;
 		CalcRep ();
 		CalcChain ();
 		StartCoroutine (SpawnEnemy ());
 		StartCoroutine (UpgradeEnemy ());
 		 
-
 	}
 
 	void OnLevelWasLoaded(int level){
@@ -109,7 +107,7 @@ public class Game_Controller : MonoBehaviour
 
 	void Update(){
 		CalcRep ();
-		CalcChain ();
+
 	}
 	
 

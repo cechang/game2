@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
 	private float nextShot;
 
 	public Slider healthSlider;
+	public GameObject gameOver;
+	public GameObject restart;
+	public GameObject sdButton;
 
 
 	void Start() 
@@ -44,8 +47,12 @@ public class PlayerController : MonoBehaviour
 			nextShot = Time.time + fireRate;
 			Instantiate (laser, shotLocation.position, shotLocation.rotation);
 		}
-		if (gameController.playerHealth == 0) {
+		if (gameController.playerHealth <= 0) {
 			Destroy(gameObject);
+			gameOver.SetActive(true);
+			restart.SetActive(true);
+			sdButton.SetActive(false);
+
 		}
 	}
 	
@@ -62,7 +69,7 @@ public class PlayerController : MonoBehaviour
 		float moveVertical = Input.GetAxis ("Vertical");
 		
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		rigidbody.velocity = movement * speed;
+		rigidbody.velocity = movement * (speed + gameController.bonusSpeed);
 		
 		rigidbody.position = new Vector3 
 			(

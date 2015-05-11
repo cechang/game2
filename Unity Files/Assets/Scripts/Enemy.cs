@@ -36,15 +36,15 @@ public class Enemy : MonoBehaviour {
 
 		rigidbody.velocity = transform.forward * -speed;
 		worth = gameController.enemyWorth;
-		health = gameController.enemyHealth;
+		health = gameController.enemyHealth + gameController.bonusEnemyHealth;
 	}
 	
 
 	void Update()
 	{
-		if (health == 0) {
+		if (health <= 0) {
 			Destroy (gameObject);
-			gameController.AddRep (worth + gameController.GetChain());
+			gameController.AddRep (worth + gameController.bonusWorth + (gameController.GetChain() * gameController.bonusChain));
 			gameController.AddChain ();
 		}
 	}
@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour {
 
 	void LoseHealth()
 	{
-		health = health - 1;
+		health = health - (1 + gameController.bonusPower);
 	}
 
 

@@ -78,8 +78,65 @@ public class Upgrade : MonoBehaviour {
 		button19Script = button19.GetComponent<Button> (); 
 		button20Script = button20.GetComponent<Button> (); 
 
-		if (gameController.bought1 = false) {
+		if (gameController.bought1 == true) {
 			button1Script.interactable = false;
+		}
+		if (gameController.bought2 == true) {
+			button2Script.interactable = false;
+		}
+		if (gameController.bought3 == true) {
+			button3Script.interactable = false;
+		}
+		if (gameController.bought4 == true) {
+			button4Script.interactable = false;
+		}
+		if (gameController.bought5 == true) {
+			button5Script.interactable = false;
+		}
+		if (gameController.bought6 == true) {
+			button6Script.interactable = false;
+		}
+		if (gameController.bought7 == true) {
+			button7Script.interactable = false;
+		}
+		if (gameController.bought8 == true) {
+			button8Script.interactable = false;
+		}
+		if (gameController.bought9 == true) {
+			button9Script.interactable = false;
+		}
+		if (gameController.bought10 == true) {
+			button10Script.interactable = false;
+		}
+		if (gameController.bought11 == true) {
+			button11Script.interactable = false;
+		}
+		if (gameController.bought12 == true) {
+			button12Script.interactable = false;
+		}
+		if (gameController.bought13 == true) {
+			button13Script.interactable = false;
+		}
+		if (gameController.bought14 == true) {
+			button14Script.interactable = false;
+		}
+		if (gameController.bought15 == true) {
+			button15Script.interactable = false;
+		}
+		if (gameController.bought16 == true) {
+			button16Script.interactable = false;
+		}
+		if (gameController.bought17 == true) {
+			button17Script.interactable = false;
+		}
+		if (gameController.bought18 == true) {
+			button18Script.interactable = false;
+		}
+		if (gameController.bought19 == true) {
+			button19Script.interactable = false;
+		}
+		if (gameController.bought20 == true) {
+			button20Script.interactable = false;
 		}
 
 	}
@@ -89,7 +146,7 @@ public class Upgrade : MonoBehaviour {
 			gameController.bonusHealth = 5;
 			button1Script.interactable = false;
 			gameController.rep -= 100;
-			gameController.bought1 = false;
+			gameController.bought1 = true;
 		}
 	}
 
@@ -97,7 +154,10 @@ public class Upgrade : MonoBehaviour {
 		if (gameController.rep >= 1000) {
 			gameController.bonusHealth = 10;
 			button2Script.interactable = false;
+			button1Script.interactable = false;
 			gameController.rep -= 1000;
+			gameController.bought2 = true;
+			gameController.bought1 = true;
 		}
 	}
 
@@ -105,7 +165,12 @@ public class Upgrade : MonoBehaviour {
 		if (gameController.rep >= 10000) {
 			gameController.bonusHealth = 15;
 			button3Script.interactable = false;
+			button2Script.interactable = false;
+			button1Script.interactable = false;
 			gameController.rep -= 10000;
+			gameController.bought3 = true;
+			gameController.bought2 = true;
+			gameController.bought1 = true;
 		}
 	}
 
@@ -113,7 +178,14 @@ public class Upgrade : MonoBehaviour {
 		if (gameController.rep >= 100000) {
 			gameController.bonusHealth = 20;
 			button4Script.interactable = false;
+			button3Script.interactable = false;
+			button2Script.interactable = false;
+			button1Script.interactable = false;
 			gameController.rep -= 100000;
+			gameController.bought4 = true;
+			gameController.bought3 = true;
+			gameController.bought2 = true;
+			gameController.bought1 = true;
 		}
 	}
 
@@ -121,7 +193,223 @@ public class Upgrade : MonoBehaviour {
 		if (gameController.rep >= 1000000) {
 			gameController.bonusHealth = 25;
 			button5Script.interactable = false;
+			button4Script.interactable = false;
+			button3Script.interactable = false;
+			button2Script.interactable = false;
+			button1Script.interactable = false;
 			gameController.rep -= 1000000;
+			gameController.bought5 = true;
+			gameController.bought4 = true;
+			gameController.bought3 = true;
+			gameController.bought2 = true;
+			gameController.bought1 = true;
 		}
 	}
+
+	public void AgilityUpgrade1(){
+		if (gameController.rep >= 100) {
+			gameController.bonusSpeed = 3;
+			button6Script.interactable = false;
+			gameController.rep -= 100;
+			gameController.bought6 = true;
+		}
+	}
+
+	public void AgilityUpgrade2(){
+		if (gameController.rep >= 1000) {
+			gameController.bonusSpeed = 6;
+			button7Script.interactable = false;
+			button6Script.interactable = false;
+			gameController.rep -= 1000;
+			gameController.bought7 = true;
+			gameController.bought6 = true;
+		}
+	}
+
+	public void AgilityUpgrade3(){
+		if (gameController.rep >= 10000) {
+			gameController.bonusSpeed = 9;
+			button8Script.interactable = false;
+			button7Script.interactable = false;
+			button6Script.interactable = false;
+			gameController.rep -= 10000;
+			gameController.bought8 = true;
+			gameController.bought7 = true;
+			gameController.bought6 = true;
+		}
+	}
+
+	public void AgilityUpgrade4(){
+		if (gameController.rep >= 100000) {
+			gameController.bonusSpeed = 12;
+			button9Script.interactable = false;
+			button8Script.interactable = false;
+			button7Script.interactable = false;
+			button6Script.interactable = false;
+			gameController.rep -= 100000;
+			gameController.bought9 = true;
+			gameController.bought8 = true;
+			gameController.bought7 = true;
+			gameController.bought6 = true;
+		}
+	}
+
+	public void AgilityUpgrade5(){
+		if (gameController.rep >= 1000000) {
+			gameController.bonusSpeed = 15;
+			button10Script.interactable = false;
+			button9Script.interactable = false;
+			button8Script.interactable = false;
+			button7Script.interactable = false;
+			button6Script.interactable = false;
+			gameController.rep -= 1000000;
+			gameController.bought10 = true;
+			gameController.bought9 = true;
+			gameController.bought8 = true;
+			gameController.bought7 = true;
+			gameController.bought6 = true;
+		}
+	}
+
+	public void PowerUpgrade1(){
+		if (gameController.rep >= 100) {
+			gameController.bonusPower = 1;
+			button11Script.interactable = false;
+			gameController.rep -= 100;
+			gameController.bought11 = true;
+		}
+	}
+
+	public void PowerUpgrade2(){
+		if (gameController.rep >= 1000) {
+			gameController.bonusPower = 2;
+			button12Script.interactable = false;
+			button11Script.interactable = false;
+			gameController.rep -= 1000;
+			gameController.bought12 = true;
+			gameController.bought11 = true;
+		}
+	}
+
+	public void PowerUpgrade3(){
+		if (gameController.rep >= 10000) {
+			gameController.bonusPower = 3;
+			button13Script.interactable = false;
+			button12Script.interactable = false;
+			button11Script.interactable = false;
+			gameController.rep -= 10000;
+			gameController.bought13 = true;
+			gameController.bought12 = true;
+			gameController.bought11 = true;
+		}
+	}
+
+	public void PowerUpgrade4(){
+		if (gameController.rep >= 100000) {
+			gameController.bonusPower = 4;
+			button14Script.interactable = false;
+			button13Script.interactable = false;
+			button12Script.interactable = false;
+			button11Script.interactable = false;
+			gameController.rep -= 100000;
+			gameController.bought14 = true;
+			gameController.bought13 = true;
+			gameController.bought12 = true;
+			gameController.bought11 = true;
+		}
+	}
+
+	public void PowerUpgrade5(){
+		if (gameController.rep >= 1000000) {
+			gameController.bonusPower = 5;
+			button15Script.interactable = false;
+			button14Script.interactable = false;
+			button13Script.interactable = false;
+			button12Script.interactable = false;
+			button11Script.interactable = false;
+			gameController.rep -= 1000000;
+			gameController.bought15 = true;
+			gameController.bought14 = true;
+			gameController.bought13 = true;
+			gameController.bought12 = true;
+			gameController.bought11 = true;
+		}
+	}
+
+	public void RankUpgrade1(){
+		if (gameController.rep >= 1000) {
+			gameController.bonusEnemyHealth = 1;
+			gameController.bonusChain = 2;
+			gameController.bonusWorth = 5;
+			button16Script.interactable = false;
+			gameController.rep -= 1000;
+			gameController.bought16 = true;
+		}
+	}
+
+	public void RankUpgrade2(){
+		if (gameController.rep >= 10000) {
+			gameController.bonusEnemyHealth = 2;
+			gameController.bonusChain = 3;
+			gameController.bonusWorth = 10;
+			button17Script.interactable = false;
+			button16Script.interactable = false;
+			gameController.rep -= 10000;
+			gameController.bought17 = true;
+			gameController.bought16 = true;
+		}
+	}
+
+	public void RankUpgrade3(){
+		if (gameController.rep >= 100000) {
+			gameController.bonusEnemyHealth = 3;
+			gameController.bonusChain = 4;
+			gameController.bonusWorth = 15;
+			button18Script.interactable = false;
+			button17Script.interactable = false;
+			button16Script.interactable = false;
+			gameController.rep -= 100000;
+			gameController.bought18 = true;
+			gameController.bought17 = true;
+			gameController.bought16 = true;
+		}
+	}
+
+	public void RankUpgrade4(){
+		if (gameController.rep >= 1000000) {
+			gameController.bonusEnemyHealth = 4;
+			gameController.bonusChain = 5;
+			gameController.bonusWorth = 20;
+			button19Script.interactable = false;
+			button18Script.interactable = false;
+			button17Script.interactable = false;
+			button16Script.interactable = false;
+			gameController.rep -= 1000000;
+			gameController.bought19 = true;
+			gameController.bought18 = true;
+			gameController.bought17 = true;
+			gameController.bought16 = true;
+		}
+	}
+
+	public void RankUpgrade5(){
+		if (gameController.rep >= 10000000) {
+			gameController.bonusEnemyHealth = 5;
+			gameController.bonusChain = 6;
+			gameController.bonusWorth = 25;
+			button20Script.interactable = false;
+			button19Script.interactable = false;
+			button18Script.interactable = false;
+			button17Script.interactable = false;
+			button16Script.interactable = false;
+			gameController.rep -= 10000000;
+			gameController.bought20 = true;
+			gameController.bought19 = true;
+			gameController.bought18 = true;
+			gameController.bought17 = true;
+			gameController.bought16 = true;
+		}
+	}
+
+
 }
