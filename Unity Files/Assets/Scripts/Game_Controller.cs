@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 //singleton pattern
 
+
 public class Game_Controller : MonoBehaviour
 {
 	public static Game_Controller instance = null; 
@@ -22,6 +23,31 @@ public class Game_Controller : MonoBehaviour
 	public int enemyHealth;
 	public int enemyWorth;
 
+	public int bonusHealth;
+	public int bonusPower;
+	public int bonusSpeed;
+	public int bonusRank;
+	
+	public bool bought1;
+	public bool bought2;
+	public bool bought3;
+	public bool bought4;
+	public bool bought5;
+	public bool bought6;
+	public bool bought7;
+	public bool bought8;
+	public bool bought9;
+	public bool bought10;
+	public bool bought11;
+	public bool bought12;
+	public bool bought13;
+	public bool bought14;
+	public bool bought15;
+	public bool bought16;
+	public bool bought17;
+	public bool bought18;
+	public bool bought19;
+	public bool bought20;
 
 	void Awake (){
 
@@ -37,6 +63,10 @@ public class Game_Controller : MonoBehaviour
 	{
 		rep = 0;
 		chain = 0;
+		bonusHealth = 0;
+		bonusPower = 0;
+		bonusRank = 0;
+		bonusSpeed = 0;
 		CalcRep ();
 		CalcChain ();
 		StartCoroutine (SpawnEnemy ());
@@ -46,10 +76,35 @@ public class Game_Controller : MonoBehaviour
 	}
 
 	void OnLevelWasLoaded(int level){
+		GameObject repTextObject = GameObject.FindWithTag ("Score");
+		if (repTextObject != null)
+		{
+			repText = repTextObject.GetComponent<GUIText> (); 
+		}
+		if (repText == null)
+		{
+			Debug.Log ("Cannot find 'Reputation'" );
+		}
+		GameObject chainTextObject = GameObject.FindWithTag ("Chain");
+		if (chainTextObject != null)
+		{
+			chainText = chainTextObject.GetComponent<GUIText> (); 
+		}
+		if (chainText == null)
+		{
+			Debug.Log ("Cannot find 'Chain'");
+		}
+
 		if (level == 1){
 			enemyHealth = 1;
 			enemyWorth = 1;
+			playerHealth = 5 + bonusHealth;
+			chain = 0;
+			CalcRep ();
 		}
+
+		CalcRep ();
+		CalcChain ();
 	}
 
 	void Update(){
