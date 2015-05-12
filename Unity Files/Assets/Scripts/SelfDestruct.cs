@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class SelfDestruct : MonoBehaviour {
 
 	public GameObject player;
+	public GameObject boomText;
 	
 
 	public IEnumerator StartBoom()
 	{
 
-		yield return new WaitForSeconds (1.0f);
+		yield return new WaitForSeconds (5.0f);
 		Destroy (player);
-
 
 		int size = Game_Controller.enemyList.Count;
 		Debug.Log ("Size is " + size);
@@ -21,26 +21,12 @@ public class SelfDestruct : MonoBehaviour {
 
 		for (int i = 0; i< size; i++) {
 			Destroy (copy[i]);
-			Debug.Log ("Destroyed");
+			print("Destroyed");
 		}
 
+		boomText.SetActive (true);
 		yield return new WaitForSeconds (2.0f);
 		Application.LoadLevel (2);
-
-
-		/*
-		 * int size = Game_Controller.enemyList.Count;
-		for (int i = 0; i< size; i++) {
-			Destroy (Game_Controller.enemyList<1>);
-		}
-		*/
-		/*yield return new WaitForSeconds (3.0f);
-		Destroy (player);
-
-		yield return new WaitForSeconds (3.0f);
-		Application.LoadLevel (2);
-		*/
-
 	}
 
 	public void Boom(){

@@ -84,7 +84,7 @@ public class Game_Controller : MonoBehaviour
 		}
 		if (repText == null)
 		{
-			Debug.Log ("Cannot find 'Reputation'" );
+			print ("Cannot find 'Reputation'" );
 		}
 		GameObject chainTextObject = GameObject.FindWithTag ("Chain");
 		if (chainTextObject != null)
@@ -93,7 +93,7 @@ public class Game_Controller : MonoBehaviour
 		}
 		if (chainText == null)
 		{
-			Debug.Log ("Cannot find 'Chain'");
+			print ("Cannot find 'Chain'");
 		}
 
 		if (level == 1){
@@ -109,7 +109,7 @@ public class Game_Controller : MonoBehaviour
 	}
 
 	void Update(){
-		if (Application.loadedLevel == 1) {
+		if (Application.loadedLevel == 1|| Application.loadedLevel == 2) {
 			CalcRep ();
 		}
 
@@ -138,7 +138,7 @@ public class Game_Controller : MonoBehaviour
 			enemyWorth = enemyWorth + 5;
 			enemyHealth = enemyHealth + 1;
 			yield return new WaitForSeconds (20.0f);
-			Debug.Log ("worth went up");
+			print ("worth went up");
 		}
 	}
 

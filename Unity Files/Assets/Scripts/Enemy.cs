@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour {
 		}
 		if (gameController == null)
 		{
-			Debug.Log ("Cannot find 'GameController' script");
+			print ("Cannot find 'GameController' script");
 		}
 
 		GameObject playerControllerObject = GameObject.FindWithTag ("Player");
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour {
 		}
 		if (playerController == null)
 		{
-			Debug.Log ("Cannot find 'PlayerController' script");
+			print ("Cannot find 'PlayerController' script");
 		}
 
 		rigidbody.velocity = transform.forward * -speed;
@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour {
 
 	void Awake(){
 		Game_Controller.enemyList.AddLast (gameObject);
-		Debug.Log ("Added enemy to list");
+		print ("Added enemy to list");
 	}
 	
 
@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour {
 
 	void OnDestroy(){
 		Game_Controller.enemyList.Remove (gameObject);
-		Debug.Log ("Removed enemy from list");
+		print ("Removed enemy from list");
 	}
 
 

@@ -54,7 +54,7 @@ public class Upgrade : MonoBehaviour {
 			gameController = gameControllerObject.GetComponent <Game_Controller> ();
 		}
 		if (gameController == null) {
-			Debug.Log ("Cannot find 'GameController' script");
+			print ("Cannot find 'GameController' script");
 		}
 
 		button1Script = button1.GetComponent<Button> ();

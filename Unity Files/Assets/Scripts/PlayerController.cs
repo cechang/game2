@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 		}
 		if (gameController == null)
 		{
-			Debug.Log ("Cannot find 'GameController' script");
+			print ("Cannot find 'GameController' script");
 		}
 
 		healthSlider.value = gameController.playerHealth;
