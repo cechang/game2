@@ -10,18 +10,22 @@ public class SelfDestruct : MonoBehaviour {
 	public IEnumerator StartBoom()
 	{
 
-		yield return new WaitForSeconds (10.0f);
+		yield return new WaitForSeconds (1.0f);
 		Destroy (player);
-		yield return new WaitForSeconds (2.0f);
-		Application.LoadLevel (2);
+
+
 		int size = Game_Controller.enemyList.Count;
 		Debug.Log ("Size is " + size);
 		GameObject[] copy = new GameObject[size];
-		Game_Controller.enemyList.CopyTo (copy,size);
+		Game_Controller.enemyList.CopyTo (copy,0);
 
 		for (int i = 0; i< size; i++) {
 			Destroy (copy[i]);
+			Debug.Log ("Destroyed");
 		}
+
+		yield return new WaitForSeconds (2.0f);
+		Application.LoadLevel (2);
 
 
 		/*
